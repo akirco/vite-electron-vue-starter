@@ -1,0 +1,55 @@
+import {BrowserWindow, ipcMain} from "electron";
+import * as path from "path";
+
+const NODE_ENV = process.env.NODE_ENV;
+
+function createWindow() {
+    const mainWindow = new BrowserWindow({
+        width: 971,
+        height: 585,
+        frame: false,
+        backgroundColor: "#1d232f",
+        resizable: false,
+        hasShadow: true,
+        show: false, //启动窗口时隐藏,直到渲染进程加载完成「ready-to-show 监听事件」 再显示窗口,防止加载时闪烁
+        webPreferences: {
+            preload: path.join(__dirname, "..", "preload"),
+            nodeIntegration: true,
+            contextIsolation: false,
+        },
+    });
+
+    // 启动窗口时隐藏,直到渲染进程加载完成「ready-to-show 监听事件」 再显示窗口,防止加载时闪烁
+    mainWindow.once("ready-to-show", () => {
+        mainWindow.show(); // 显示窗口
+    });
+
+
+    // * 主窗口加载外部链接
+    if (NODE_ENV === "development") {
+        mainWindow.loadURL("http://localhost:3000/"); // 开发环境,加载vite启动的vue项目地址
+        // 打开开发工具
+        mainWindow.webContents.openDevTools();
+    }
+    if (NODE_ENV !== "development")
+        mainWindow.loadFile("dist/.vue/index.html"); // 生产环境加载打包后文件
+
+    // 窗口事件
+    ipcMain.on("windowMinSize", () => {
+        mainWindow.minimize();
+    });
+    ipcMain.on("toggleSize", (event) => {
+        if (mainWindow.isMaximized()) {
+            event.reply("winState", "restore");
+            mainWindow.restore();
+        } else {
+            mainWindow.maximize();
+            event.reply("winState", "maximize");
+        }
+    });
+    ipcMain.on("windowClosed", () => {
+        mainWindow.close();
+    });
+}
+
+export {createWindow};
