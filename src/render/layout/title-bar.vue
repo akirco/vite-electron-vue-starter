@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {reactive} from "vue";
+import {reactive, defineProps} from "vue";
 import max_srcset from "../assets/icons/max.svg"
 import restore_srcset from "../assets/icons/restore.svg"
 
@@ -9,9 +9,16 @@ import restore_srcset from "../assets/icons/restore.svg"
 //! 每个btn添加@click事件
 const ipcRenderer = require("electron").ipcRenderer;
 
-const props = reactive({
+const refObj = reactive({
   srcset: max_srcset,
 });
+const props = defineProps({
+  title: {
+    type: String,
+    default: "electron-vue-starter"
+  }
+})
+
 
 function winMinSize(): void {
   ipcRenderer.send("windowMinSize", true);
@@ -22,9 +29,9 @@ function toggleSize() {
   ipcRenderer.on("winState", (event, args) => {
     // console.log("渲染进程收到的消息是：", args);
     if (args === "maximize") {
-      props.srcset = restore_srcset;
+      refObj.srcset = restore_srcset;
     } else if (args === "restore") {
-      props.srcset = max_srcset;
+      refObj.srcset = max_srcset;
     }
   });
 }
@@ -38,7 +45,7 @@ function winClosed() {
   <div id="titlebar">
     <div id="drag-region">
       <div id="window-title">
-        <span>Electron quick start</span>
+        <span>{{ props.title }}</span>
       </div>
       <div id="window-controls">
         <div class="button" id="min-button" @click="winMinSize">
@@ -50,7 +57,7 @@ function winClosed() {
         </div>
 
         <div class="button" id="max-button" @click="toggleSize">
-          <img class="icon" :srcset="props.srcset + ' '+'2.5x'" draggable="false"/>
+          <img class="icon" :srcset="refObj.srcset + ' '+'2.5x'" draggable="false"/>
         </div>
 
         <div class="button" id="close-button" @click="winClosed">
@@ -167,9 +174,5 @@ function winClosed() {
 
 .maximized #window-title {
   margin-left: 12px;
-}
-
-.maximized #max-button {
-  display: none;
 }
 </style>

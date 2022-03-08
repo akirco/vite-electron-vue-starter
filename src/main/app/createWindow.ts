@@ -9,13 +9,16 @@ function createWindow() {
         height: 585,
         frame: false,
         backgroundColor: "#1d232f",
-        resizable: false,
+        // resizable: false,
+        // thickFrame:false,
         hasShadow: true,
         show: false, //启动窗口时隐藏,直到渲染进程加载完成「ready-to-show 监听事件」 再显示窗口,防止加载时闪烁
+        icon: path.join(__dirname, "../../../public/electron.ico"),
         webPreferences: {
             preload: path.join(__dirname, "..", "preload"),
             nodeIntegration: true,
             contextIsolation: false,
+            spellcheck: true
         },
     });
 
@@ -29,7 +32,7 @@ function createWindow() {
     if (NODE_ENV === "development") {
         mainWindow.loadURL("http://localhost:3000/"); // 开发环境,加载vite启动的vue项目地址
         // 打开开发工具
-        mainWindow.webContents.openDevTools();
+        // mainWindow.webContents.openDevTools();
     }
     if (NODE_ENV !== "development")
         mainWindow.loadFile("dist/.vue/index.html"); // 生产环境加载打包后文件
@@ -50,6 +53,10 @@ function createWindow() {
     ipcMain.on("windowClosed", () => {
         mainWindow.close();
     });
+    //失去焦点时触发关闭
+    // mainWindow.on("blur",()=>{
+    //     mainWindow.hide();
+    // })
 }
 
 export {createWindow};
