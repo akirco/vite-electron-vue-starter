@@ -3,8 +3,24 @@
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/)
-    + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+  + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+    
+## 后续实现
 
-## Type Support For `.vue` Imports in TS
+- 窗口固定
+- 系统消息
+- 系统托盘
+- 添加全局自定义的contextmenu
+
+## preview
+
+- init
+
+![初始化](https://xg3.jiashumao.net/2022/03/09/EpL9I8fZ.png)
+
+- max
+
+![最大化](https://xg3.jiashumao.net/2022/03/09/lA4sQbtx.png)
+
 
 
