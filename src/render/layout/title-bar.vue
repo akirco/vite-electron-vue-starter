@@ -18,7 +18,16 @@ const props = defineProps({
     default: "electron-vue-starter"
   }
 })
-
+//处理最大化事件修改图标
+ipcRenderer.on("isMaxed", (_, state) => {
+  // console.log("渲染进程收到的消息是：", state);
+  if (state === "false") {
+    refObj.srcset = restore_srcset;
+  }
+  if (state === "true") {
+    refObj.srcset = max_srcset;
+  }
+});
 
 function winMinSize(): void {
   ipcRenderer.send("windowMinSize", true);

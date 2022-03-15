@@ -44,16 +44,25 @@ function createWindow() {
     });
     ipcMain.on("toggleSize", (event) => {
         if (mainWindow.isMaximized()) {
-            event.reply("winState", "restore");
+
             mainWindow.restore();
         } else {
             mainWindow.maximize();
-            event.reply("winState", "maximize");
+
         }
     });
     ipcMain.on("windowClosed", () => {
         mainWindow.close();
     });
+
+    mainWindow.on("maximize", () => {
+        mainWindow.webContents.send("isMaxed", "false");
+    });
+
+    mainWindow.on("unmaximize", () => {
+        mainWindow.webContents.send("isMaxed", "true");
+    });
+
     //失去焦点时触发关闭
     // mainWindow.on("blur",()=>{
     //     mainWindow.hide();
