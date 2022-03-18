@@ -18,6 +18,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "electron-acrylic-window": "^0.5.11",
     "vue": "^3.2.25"
   },
   "devDependencies": {

@@ -1,5 +1,7 @@
-import {BrowserWindow, ipcMain} from "electron";
+import {ipcMain, BrowserWindow} from "electron";
 import * as path from "path";
+
+const {setVibrancy} = require('electron-acrylic-window')
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -8,9 +10,9 @@ function createWindow() {
         width: 971,
         height: 585,
         frame: false,
-        backgroundColor: "#1d232f",
+        // backgroundColor: "#1d232f",
         resizable: false,
-        opacity: 0.75,
+        // opacity: 0.75,
         thickFrame: false,
         hasShadow: true,
         show: false, //启动窗口时隐藏,直到渲染进程加载完成「ready-to-show 监听事件」 再显示窗口,防止加载时闪烁
@@ -19,9 +21,11 @@ function createWindow() {
             preload: path.join(__dirname, "..", "preload"),
             nodeIntegration: true,
             contextIsolation: false,
-            spellcheck: true
+            webviewTag: true
         },
     });
+
+    setVibrancy(mainWindow);
 
     // 启动窗口时隐藏,直到渲染进程加载完成「ready-to-show 监听事件」 再显示窗口,防止加载时闪烁
     mainWindow.once("ready-to-show", () => {
@@ -33,7 +37,7 @@ function createWindow() {
     if (NODE_ENV === "development") {
         mainWindow.loadURL("http://localhost:3000/"); // 开发环境,加载vite启动的vue项目地址
         // 打开开发工具
-        mainWindow.webContents.openDevTools();
+        // mainWindow.webContents.openDevTools();
     }
     if (NODE_ENV !== "development")
         mainWindow.loadFile("dist/.vue/index.html"); // 生产环境加载打包后文件
@@ -44,11 +48,9 @@ function createWindow() {
     });
     ipcMain.on("toggleSize", (event) => {
         if (mainWindow.isMaximized()) {
-
             mainWindow.restore();
         } else {
             mainWindow.maximize();
-
         }
     });
     ipcMain.on("windowClosed", () => {

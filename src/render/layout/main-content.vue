@@ -2,7 +2,8 @@
 </script>
 
 <template>
-  <div id="main-content"></div>
+  <div id="main-content">
+  </div>
 </template>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {reactive, defineProps} from "vue";
+import {reactive} from "vue";
 import max_srcset from "../assets/icons/max.svg"
 import restore_srcset from "../assets/icons/restore.svg"
 
