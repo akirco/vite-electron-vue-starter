@@ -16,11 +16,11 @@
 
 - init
 
-![初始化](https://xg3.jiashumao.net/2022/03/09/EpL9I8fZ.png)
+![init](https://raw.githubusercontent.com/Casuor/ImgCDN/master/img/Snipaste_2022-05-07_19-50-52.png)
 
 - max
 
-![最大化](https://xg3.jiashumao.net/2022/03/09/lA4sQbtx.png)
+![max](https://raw.githubusercontent.com/Casuor/ImgCDN/master/img/Snipaste_2022-05-07_19-51-04.png)
 
 
 
