@@ -8,6 +8,11 @@ import {createWindow} from "./app/createWindow";
 // 部分 API 在 ready 事件触发后才能使用。
 app.whenReady().then(() => {
     createWindow();
+    //高dpi支持
+    if (process.platform === 'win32') {
+        app.commandLine.appendSwitch('high-dpi-support', 'true')
+        app.commandLine.appendSwitch('force-device-scale-factor', '1')
+    }
 });
 
 
