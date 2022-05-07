@@ -1,0 +1,27 @@
+{
+  "name": "xspace",
+  "version": "1.0",
+  "description": "a test demo",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "aki",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^16.0.7"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.10.2",
+    "bootstrap-vue": "^2.21.2",
+    "electron-dl": "^3.3.0",
+    "electron-localshortcut": "^3.2.1",
+    "electron-util": "^0.17.2",
+    "electron-window": "^0.8.1",
+    "jquery": "^3.6.0",
+    "vue": "2"
+  }
+}
