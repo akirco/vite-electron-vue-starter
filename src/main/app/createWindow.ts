@@ -1,7 +1,6 @@
 import {ipcMain, BrowserWindow} from "electron";
 import * as path from "path";
 
-const {setVibrancy} = require('electron-acrylic-window')
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -25,7 +24,6 @@ function createWindow() {
         },
     });
 
-    setVibrancy(mainWindow);
 
     // 启动窗口时隐藏,直到渲染进程加载完成「ready-to-show 监听事件」 再显示窗口,防止加载时闪烁
     mainWindow.once("ready-to-show", () => {
