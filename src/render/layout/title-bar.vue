@@ -51,30 +51,33 @@ function winClosed() {
 </script>
 
 <template>
-  <div id="titlebar">
-    <div id="drag-region">
-      <div id="window-title">
-        <span>{{ props.title }}</span>
+  <div class="h-[35px] w-full  text-gray-500 absolute">
+    <div id="drag-region" class="w-full h-full grid grid-cols-[138px]">
+      <div class="grid-cols-1 flex items-center  justify-center">
+        <span class="overflow-hidden whitespace-nowrap leading-[1.5] text-ellipsis font-sans text-xs">{{
+            props.title
+          }}</span>
       </div>
-      <div id="window-controls">
-        <div class="button" id="min-button" @click="winMinSize">
+      <div id="window-controls" class="grid absolute top-0 right-0 h-full select-none">
+        <div
+            class=" flex justify-center items-center h-full w-full select-none hover:bg-gray-600 active:bg-zinc-500"
+            @click="winMinSize">
           <img
               class="icon"
               srcset="../assets/icons/min.svg 2.5x"
               draggable="false"
           />
         </div>
-
-        <div class="button" id="max-button" @click="toggleSize">
+        <div
+            class=" flex justify-center items-center h-full w-full select-none hover:bg-gray-600 active:bg-zinc-500"
+            @click="toggleSize">
           <img class="icon" :srcset="icon.srcset + ' '+'2.5x'" draggable="false"/>
         </div>
 
-        <div class="button" id="close-button" @click="winClosed">
-          <img
-              class="icon"
-              srcset="../assets/icons/closed.svg 1.75x"
-              draggable="false"
-          />
+        <div
+            class=" flex justify-center items-center h-full w-full select-none hover:bg-red-500 active:bg-red-200"
+            @click="winClosed">
+          <img class="icon" srcset="../assets/icons/closed.svg 1.75x" draggable="false"/>
         </div>
       </div>
     </div>
@@ -82,69 +85,15 @@ function winClosed() {
 </template>
 
 <style scoped>
-#titlebar {
-  position: fixed;
-  height: 35px;
-  width: 100%;
-  background: #282c34;
-  color: #828997;
-}
-
-#titlebar #drag-region {
-  width: 100%;
-  height: 100%;
+#drag-region {
   -webkit-app-region: drag;
-  display: grid;
-  grid-template-columns: auto 138px;
 }
 
 #window-controls {
-  display: grid;
   grid-template-columns: repeat(3, 50px);
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
   -webkit-app-region: no-drag;
 }
 
-#window-controls .button {
-  grid-row: 1 / span 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  user-select: none;
-}
-
-#window-controls .button:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-#window-controls .button:active {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-#close-button:hover {
-  background: #a52d37 !important;
-}
-
-#close-button:active {
-  background: #f1707a !important;
-}
-
-#close-button:active .icon {
-  filter: invert(1);
-}
-
-#min-button {
-  grid-column: 1;
-}
-
-#close-button {
-  grid-column: 3;
-}
 
 @media (-webkit-device-pixel-ratio: 1.5),
 (device-pixel-ratio: 1.5),
@@ -156,32 +105,5 @@ function winClosed() {
     width: 10px;
     height: 10px;
   }
-}
-
-#window-title {
-  grid-column: 1;
-  display: flex;
-  align-items: center;
-  margin-left: 8px;
-  overflow: hidden;
-  font-family: "Segoe UI", sans-serif;
-  font-size: 12px;
-  padding-left: 8px;
-}
-
-#window-title span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  line-height: 1.5;
-}
-
-.maximized #titlebar {
-  width: 100%;
-  padding: 0;
-}
-
-.maximized #window-title {
-  margin-left: 12px;
 }
 </style>

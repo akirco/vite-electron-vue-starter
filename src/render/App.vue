@@ -6,20 +6,10 @@ import MainContent from "./layout/main-content.vue";
 </script>
 
 <template>
-  <div id="app-content">
-    <TitleBar></TitleBar>
-    <MainContent></MainContent>
-  </div>
+  <TitleBar></TitleBar>
+  <MainContent></MainContent>
 </template>
 
 <style>
-#app-content {
-  margin: 0;
-  padding: 0;
-  width: 100%;;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
+
 </style>
