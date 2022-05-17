@@ -10,6 +10,5 @@
 #main-content {
   width: 100%;
   flex: 1;
-  background-color: #1d232f;
 }
 </style>

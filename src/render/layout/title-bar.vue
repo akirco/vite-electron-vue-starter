@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {reactive} from "vue";
-import max_srcset from "../assets/icons/max.svg"
-import restore_srcset from "../assets/icons/restore.svg"
+import maxIcon from "@/assets/icons/max.svg"
+import restoreIcon from "@/assets/icons/restore.svg"
 
 // import { ipcRenderer } from "electron";
 //* 也可以使用preload.js contextBridge,但是不能直接操作vue的dom元素
@@ -9,8 +9,8 @@ import restore_srcset from "../assets/icons/restore.svg"
 //! 每个btn添加@click事件
 const ipcRenderer = require("electron").ipcRenderer;
 
-const refObj = reactive({
-  srcset: max_srcset,
+const icon = reactive({
+  srcset: maxIcon,
 });
 const props = defineProps({
   title: {
@@ -22,10 +22,10 @@ const props = defineProps({
 ipcRenderer.on("isMaxed", (_, state) => {
   // console.log("渲染进程收到的消息是：", state);
   if (state === "false") {
-    refObj.srcset = restore_srcset;
+    icon.srcset = restoreIcon;
   }
   if (state === "true") {
-    refObj.srcset = max_srcset;
+    icon.srcset = maxIcon;
   }
 });
 
@@ -38,9 +38,9 @@ function toggleSize() {
   ipcRenderer.on("winState", (event, args) => {
     // console.log("渲染进程收到的消息是：", args);
     if (args === "maximize") {
-      refObj.srcset = restore_srcset;
+      icon.srcset = restoreIcon;
     } else if (args === "restore") {
-      refObj.srcset = max_srcset;
+      icon.srcset = maxIcon;
     }
   });
 }
@@ -66,7 +66,7 @@ function winClosed() {
         </div>
 
         <div class="button" id="max-button" @click="toggleSize">
-          <img class="icon" :srcset="refObj.srcset + ' '+'2.5x'" draggable="false"/>
+          <img class="icon" :srcset="icon.srcset + ' '+'2.5x'" draggable="false"/>
         </div>
 
         <div class="button" id="close-button" @click="winClosed">
@@ -86,7 +86,7 @@ function winClosed() {
   position: fixed;
   height: 35px;
   width: 100%;
-  background: #171c26;
+  background: #282c34;
   color: #828997;
 }
 

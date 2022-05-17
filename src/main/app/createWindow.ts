@@ -1,5 +1,5 @@
 import {ipcMain, BrowserWindow} from "electron";
-import * as path from "path";
+import path from "path";
 
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -9,13 +9,13 @@ function createWindow() {
         width: 971,
         height: 585,
         frame: false,
-        // backgroundColor: "#1d232f",
-        resizable: false,
+        backgroundColor: "#282c34",
+        // resizable: false,
         // opacity: 0.75,
-        thickFrame: false,
+        thickFrame: true,
         hasShadow: true,
         show: false, //启动窗口时隐藏,直到渲染进程加载完成「ready-to-show 监听事件」 再显示窗口,防止加载时闪烁
-        icon: path.join(__dirname, "../../../public/electron.ico"),
+        icon: path.join(__dirname, '../../.vue/electron.ico'),
         webPreferences: {
             preload: path.join(__dirname, "..", "preload"),
             nodeIntegration: true,
@@ -23,7 +23,6 @@ function createWindow() {
             webviewTag: true
         },
     });
-
 
     // 启动窗口时隐藏,直到渲染进程加载完成「ready-to-show 监听事件」 再显示窗口,防止加载时闪烁
     mainWindow.once("ready-to-show", () => {
