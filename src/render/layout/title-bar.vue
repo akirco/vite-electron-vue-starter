@@ -51,12 +51,12 @@ function winClosed() {
 </script>
 
 <template>
-  <div class="h-[35px] w-full  text-gray-500 absolute">
+  <div class="h-[35px] w-full  text-gray-500 fixed border-b-[1.0px] border-b-selfBorder">
     <div id="drag-region" class="w-full h-full grid grid-cols-[138px]">
       <div class="grid-cols-1 flex items-center  justify-center">
-        <span class="overflow-hidden whitespace-nowrap leading-[1.5] text-ellipsis font-sans text-xs">{{
-            props.title
-          }}</span>
+        <span class="overflow-hidden whitespace-nowrap leading-[1.5] text-ellipsis font-sans text-xs">
+          {{ props.title }}
+        </span>
       </div>
       <div id="window-controls" class="grid absolute top-0 right-0 h-full select-none">
         <div
