@@ -24,11 +24,26 @@ jobs:
       - name: setup node.js env
         uses: actions/setup-node@v3.2.0
         with:
-          node-versions: '16.13.2'
+          node-version: 16.x
+          architecture: x64
       - name: setup pnpm
         uses: pnpm/action-setup@v2.2.1
+        id: pnpm-install
         with:
-          run_install:
+          version: 7
+          run_install: false
+      - name: get pnpm store directory
+        id: pnpm-cache
+        run: "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - name: setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: install deps
+        run: pnpm install
       - name: build app
         run:
           pnpm build
