@@ -2,11 +2,11 @@ name: build/release
 on:
   push:
     branches:
-      - le-backup
+      - left-backup
       - release/*
   pull_request:
     branches:
-      - lf-backup
+      - left-backup
   schedule:
     - cron: "0 2 * * 1-5"
   workflow_dispatch:
