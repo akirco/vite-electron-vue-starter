@@ -56,7 +56,11 @@
     "win": {
       "icon": "./public/electron.ico",
       "publish": [
-        "github"
+        {
+          "provider": "github",
+          "repo": "vite-electron-vue-starter",
+          "owner": "akirco"
+        }
       ],
       "target": [
         "nsis",
