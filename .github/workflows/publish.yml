@@ -24,12 +24,23 @@ jobs:
       - name: setup node.js env
         uses: actions/setup-node@v3.2.0
         with:
-          node-versions: '16.x'
-      - name: Electron Builder Action
-        uses: samuelmeuli/action-electron-builder@v1.6.0
+          node-versions: '16.13.2'
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2.2.1
         with:
-          github_token: ${{ secrets.GH_TOKEN   }}
-          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
+          run_install:
+      - name: build app
+        run:
+          pnpm build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release windows package
+        run:
+          pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
 
 
 

@@ -1,7 +1,7 @@
 {
   "name": "electron-app",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "email": "aki.me.morin@gmail.com",
     "name": "akirco",
@@ -49,7 +49,7 @@
   "build": {
     "appId": "com.akirco.app",
     "productName": "electron",
-    "copyright": "Copyright © 2021 <your-name>",
+    "copyright": "Copyright © 2021 akirco",
     "directories": {
       "output": "build"
     },
