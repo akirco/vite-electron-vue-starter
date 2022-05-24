@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+  <link rel="stylesheet" href="/basic.css">
+</head>
+<body>
+<div id="titleBar">
+  <ul>
+    <li><div class="icon" id="titleBar-close"></div></li>
+    <li><div class="icon" id="titleBar-maxSize"></div></li>
+    <li><div class="icon" id="titleBar-minSize"></div></li>
+  </ul>
+</div>
+<div id="main"></div>
+<script type="module" src="/src/render/main.ts"></script>
+<script type="module" src="/src/main/renderer.ts"></script>
+</body>
+</html>
