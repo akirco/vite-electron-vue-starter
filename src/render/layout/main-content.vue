@@ -2,9 +2,9 @@
 </script>
 
 <template>
-<div id="main-content" class="flex-1 pt-[35px]">
+  <div id="main-content" class="relative top-[35px]  h-full">
 
-</div>
+  </div>
 </template>
 
 <style scoped>
