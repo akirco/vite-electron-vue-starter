@@ -28,11 +28,9 @@ linux:
   icon: "./public/icons/256x256.png"
   category: "Development"
   target:
-    - deb
-    - freebsd
-    - rpm
+    - tar.gz
     - AppImage
-    - pacman
+    - deb
 mac:
   target: dmg
   icon: "./public/electron.icns"
