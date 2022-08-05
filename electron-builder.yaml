@@ -1,0 +1,40 @@
+---
+appId: com.akirco.app
+productName: akirco
+copyright: Copyright © 2021 akirco
+files:
+  - dist
+directories:
+  output: build
+win:
+  icon: "./public/electron.ico"
+  publish:
+    - provider: github
+      repo: vite-electron-vue-starter
+      owner: akirco
+  target:
+    - nsis
+    - portable
+    - 7z
+nsis:
+  oneClick: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: faily
+  artifactName: "${productName}-${version}-setup.${ext}"
+linux:
+  icon: "./public/icons/256x256.png"
+  category: "Development"
+  target:
+    - deb
+    - freebsd
+    - rpm
+    - AppImage
+    - pacman
+mac:
+  target: dmg
+  icon: "./public/electron.icns"
+  category: public.app-category.developer-tools
+electronVersion: 18.2.4

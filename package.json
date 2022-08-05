@@ -38,32 +38,5 @@
     "vite": "^2.8.0",
     "vue-tsc": "^0.29.8",
     "wait-on": "^6.0.1"
-  },
-  "build": {
-    "appId": "com.aki.electron-vue3",
-    "productName": "electron-vue-starter",
-    "copyright": "Copyright © 2021 <your-name>",
-    "directories": {
-      "output": "build"
-    },
-    "win": {
-      "icon": "./public/electron.ico",
-      "target": [
-        "nsis",
-        "zip",
-        "7z"
-      ]
-    },
-    "files": [
-      "dist"
-    ],
-    "nsis": {
-      "oneClick": false,
-      "allowElevation": true,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true,
-      "shortcutName": "electron-vue"
-    }
   }
 }
