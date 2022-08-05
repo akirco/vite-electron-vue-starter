@@ -11,10 +11,10 @@
     "start": "cross-env NODE_ENV=development electron ./dist/.electron/main.js",
     "render:dev": "vite",
     "main:dev": "electron .",
-    "build": "npm-run-all build:vue build:tsc build:win",
+    "build": "npm-run-all build:vue build:tsc build:all",
     "build:vue": "vue-tsc --noEmit && vite build",
     "build:tsc": "tsc -p tsconfig.electron.json",
-    "build:win": "electron-builder --windows",
+    "build:all": "electron-builder --mac --win --linux --publish always",
     "preview": "vite preview"
   },
   "dependencies": {
