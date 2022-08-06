@@ -31,8 +31,8 @@ linux:
     - tar.gz
     - AppImage
     - deb
-mac:
-  target: dmg
-  icon: "./public/electron.icns"
-  category: public.app-category.developer-tools
+# mac:
+#   target: dmg
+#   icon: "./public/electron.icns"
+#   category: public.app-category.developer-tools
 electronVersion: 18.2.4
