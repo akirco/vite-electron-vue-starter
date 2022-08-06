@@ -27,6 +27,7 @@ nsis:
 linux:
   icon: "./public/icons/256x256.png"
   category: "Development"
+  maintainer: akirco
   target:
     - tar.gz
     - AppImage

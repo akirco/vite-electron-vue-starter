@@ -2,6 +2,7 @@
   "name": "electron-vue-starter",
   "author": "aki",
   "description": "electron vue starter",
+  "email": "earlfx@163.com",
   "private": true,
   "version": "1.0.0",
   "main": "dist/.electron/main.js",
@@ -14,7 +15,7 @@
     "build": "npm-run-all build:vue build:tsc build:all",
     "build:vue": "vue-tsc --noEmit && vite build",
     "build:tsc": "tsc -p tsconfig.electron.json",
-    "build:all": "electron-builder",
+    "build:all": "electron-builder --publish always",
     "preview": "vite preview"
   },
   "dependencies": {
