@@ -14,7 +14,7 @@
     "build": "npm-run-all build:vue build:tsc build:all",
     "build:vue": "vue-tsc --noEmit && vite build",
     "build:tsc": "tsc -p tsconfig.electron.json",
-    "build:all": "electron-builder --mac --win --linux --publish always",
+    "build:all": "electron-builder",
     "preview": "vite preview"
   },
   "dependencies": {
