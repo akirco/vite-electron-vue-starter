@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, onMounted } from "vue";
 import maxIcon from "@/assets/icons/max.svg";
 import restoreIcon from "@/assets/icons/restore.svg";
 
 // import { ipcRenderer } from "electron";
-//* 也可以使用preload.js contextBridge,但是不能直接操作vue的dom元素
+// 也可以使用preload.js，使用contextBridge暴露一个api但是不能直接操作vue的dom元素
 
 //! 每个btn添加@click事件
 const ipcRenderer = require("electron").ipcRenderer;
@@ -12,21 +12,23 @@ const ipcRenderer = require("electron").ipcRenderer;
 const icon = reactive({
   srcset: maxIcon,
 });
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     default: "electron-vue-starter",
   },
 });
-//处理最大化事件修改图标
-ipcRenderer.on("isMaxed", (_, state) => {
-  // console.log("渲染进程收到的消息是：", state);
-  if (state === "false") {
-    icon.srcset = restoreIcon;
-  }
-  if (state === "true") {
-    icon.srcset = maxIcon;
-  }
+
+onMounted(() => {
+  ipcRenderer.on("isMaxed", (_e, state) => {
+    // console.log("渲染进程收到的消息是：", state);
+    if (state === "false") {
+      icon.srcset = restoreIcon;
+    }
+    if (state === "true") {
+      icon.srcset = maxIcon;
+    }
+  });
 });
 
 function winMinSize(): void {
@@ -52,14 +54,14 @@ function winClosed() {
 
 <template>
   <div
-    class="h-[35px] w-full text-gray-500 fixed border-b-[1.0px] border-b-selfBorder"
+    class="h-[35px] w-full text-gray-500 fixed border-b-[1px] border-b-light-400 bg-gray-50 dark:bg-selfBgColor dark:border-b-selfBorder"
   >
     <div id="drag-region" class="w-full h-full grid grid-cols-[138px]">
-      <div class="grid-cols-1 flex items-center justify-center">
+      <div class="grid-cols-1 flex items-center pl-2">
         <span
-          class="overflow-hidden whitespace-nowrap leading-[1.5] text-ellipsis font-sans text-xs"
+          class="whitespace-nowrap leading-[1.5] text-ellipsis font-sans text-xs"
         >
-          {{ props.title }}
+          {{ title }}
         </span>
       </div>
       <div

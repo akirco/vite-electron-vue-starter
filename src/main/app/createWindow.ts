@@ -10,9 +10,8 @@ function createWindow() {
     minWidth: 971,
     minHeight: 585,
     frame: false,
-    backgroundColor: "#282c34",
+    // backgroundColor: "#282c34",
     // resizable: false,
-    // opacity: 0.75,
     thickFrame: true,
     hasShadow: true,
     show: false, //启动窗口时隐藏,直到渲染进程加载完成「ready-to-show 监听事件」 再显示窗口,防止加载时闪烁
@@ -34,7 +33,7 @@ function createWindow() {
   if (NODE_ENV === "development") {
     mainWindow.loadURL("http://localhost:3000/"); // 开发环境,加载vite启动的vue项目地址
     // 打开开发工具
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
   }
   if (NODE_ENV !== "development") mainWindow.loadFile("dist/.vue/index.html"); // 生产环境加载打包后文件
 

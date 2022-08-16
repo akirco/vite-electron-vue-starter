@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'selfBorder': "#1e2226"
+        'selfBorder': "#1e2226",
+        'selfBgColor':"#282c34"
       }
     },
   },
