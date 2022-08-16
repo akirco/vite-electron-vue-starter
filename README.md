@@ -1,5 +1,7 @@
 # Vue 3 + Typescript + Vite + electron
 
+**推荐使用`dev`分支模板**
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/)
