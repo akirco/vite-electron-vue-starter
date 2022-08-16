@@ -1,0 +1,55 @@
+name: build/release
+on:
+  push:
+    branches:
+      - left-backup
+      - release/*
+  pull_request:
+    branches:
+      - left-backup
+  schedule:
+    - cron: "0 2 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: deploy to release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ macos-latest, ubuntu-latest, windows-latest ]
+    steps:
+      - name: check out git repository
+        uses: actions/checkout@v3
+      - name: setup node.js env
+        uses: actions/setup-node@v3.2.0
+        with:
+          node-version: 16.x
+          architecture: x64
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2.2.1
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: install deps
+        run: pnpm install
+      - name: build app
+        run:
+          pnpm build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Release windows package
+        run:
+          pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+
+
+
+
+
+
+
+
