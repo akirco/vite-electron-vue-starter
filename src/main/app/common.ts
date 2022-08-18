@@ -1,7 +1,7 @@
-import { ipcMain,nativeTheme } from "electron";
-import type {BrowserWindow} from "electron"
+import { ipcMain, nativeTheme } from "electron";
+import type { BrowserWindow } from "electron";
 
-function windowAction(mainWindow:BrowserWindow){
+async function windowAction(mainWindow: BrowserWindow) {
   // 窗口事件
   ipcMain.on("windowMinSize", () => {
     mainWindow.minimize();
@@ -26,22 +26,19 @@ function windowAction(mainWindow:BrowserWindow){
   });
 }
 
-function toggleDark(){
-  ipcMain.handle('dark-mode:toggle', () => {
+async function toggleDark() {
+  ipcMain.handle("dark-mode:toggle", () => {
     if (nativeTheme.shouldUseDarkColors) {
-      nativeTheme.themeSource = 'light'
+      nativeTheme.themeSource = "light";
     } else {
-      nativeTheme.themeSource = 'dark'
+      nativeTheme.themeSource = "dark";
     }
-    return nativeTheme.shouldUseDarkColors
-  })
+    return nativeTheme.shouldUseDarkColors;
+  });
 
-  ipcMain.handle('dark-mode:system', () => {
-    nativeTheme.themeSource = 'system'
-  })
+  ipcMain.handle("dark-mode:system", () => {
+    nativeTheme.themeSource = "system";
+  });
 }
 
-export {
-  windowAction,
-  toggleDark
-}
+export { windowAction, toggleDark };

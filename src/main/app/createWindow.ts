@@ -1,10 +1,10 @@
-import {ipcMain, BrowserWindow} from "electron";
+import { BrowserWindow, Menu } from "electron";
 import path from "path";
-import {toggleDark, windowAction} from "./common";
+import { toggleDark, windowAction } from "./common";
 
 const NODE_ENV = process.env.NODE_ENV;
 
-function createWindow() {
+async function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 971,
     height: 590,
@@ -21,7 +21,10 @@ function createWindow() {
       contextIsolation: false,
     },
   });
-
+  mainWindow.webContents.on("dom-ready", () => {
+    mainWindow.removeMenu();
+    Menu.setApplicationMenu(Menu.buildFromTemplate([]));
+  });
   mainWindow.once("ready-to-show", async () => {
     await mainWindow.show();
   });
@@ -33,8 +36,8 @@ function createWindow() {
       await mainWindow.loadFile("dist/.vue/index.html");
     }
   })();
-  windowAction(mainWindow)
-  toggleDark()
+  await windowAction(mainWindow);
+  await toggleDark();
 }
 
-export {createWindow};
+export { createWindow };

@@ -1,11 +1,18 @@
 # Vue 3 + Typescript + Vite + electron
 
-**推荐使用`dev`分支模板**此模板不能使用electron提供的预加载，渲染进程
+**推荐使用`dev`分支模板**此模板不能使用 electron 提供的预加载，渲染进程
 
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/)
+
   - [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+
+- 自定义的 titleBar
+
+- 禁用 Ctrl+R , F5 刷新
+
+- 主题切换
 
 ## 后续实现
 
