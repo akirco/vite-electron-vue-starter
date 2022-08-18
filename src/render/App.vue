@@ -1,24 +1,21 @@
 <script setup lang="ts">
-import TitleBar from "./layout/title-bar.vue";
 import MainContent from "./layout/main-content.vue";
-function toogleTheme() {
-  const body = document.querySelector("#app");
-  body?.classList.toggle("dark");
+import btn from "@/components/button/btn.vue"
+import topBar from "@/components/titleBar";
+import ipcRenderer from "@/utils/ipcRenderer";
+import {ref} from "vue";
+const val = ref("40px")
+function toggleDark(){
+  ipcRenderer.invoke("dark-mode:toggle")
 }
 </script>
 
 <template>
-  <TitleBar title="electron-starter"></TitleBar>
-  <MainContent class="dark:bg-selfBgColor">
-    <div class="flex items-center pt-4 pl-4">
-      <button
-        @click="toogleTheme"
-        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
-        toogleTheme
-      </button>
-    </div>
+  <!-- 自定义titleBar高度也需要同时设置MainContent的top和高度值 -->
+  <topBar :height="val" title="测试" fontSize="14px"></topBar>
+  <MainContent :top="val" :height="val">
+      <btn title="Dark" @click="toggleDark"></btn>
   </MainContent>
 </template>
 
-<style></style>
+<style scoped></style>

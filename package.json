@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^9.1.0",
+    "@vueuse/electron": "^9.1.0",
     "vue": "^3.2.37"
   },
   "devDependencies": {

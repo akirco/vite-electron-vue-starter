@@ -1,32 +1,32 @@
 <script setup lang="ts">
-import { reactive, onMounted } from "vue";
+import {onMounted, ref} from "vue";
 import maxIcon from "@/assets/icons/max.svg";
 import restoreIcon from "@/assets/icons/restore.svg";
-
-// import { ipcRenderer } from "electron";
-// 也可以使用preload.js，使用contextBridge暴露一个api但是不能直接操作vue的dom元素
-
-//! 每个btn添加@click事件
-const ipcRenderer = require("electron").ipcRenderer;
-
-const icon = reactive({
-  srcset: maxIcon,
-});
+import ipcRenderer from "@/utils/ipcRenderer";
+const Icon = ref(maxIcon);
 defineProps({
   title: {
     type: String,
     default: "electron-vue-starter",
   },
+  height: {
+    type: String,
+    default: "35px"
+  },
+  fontSize:{
+    type:String,
+    default:"12px"
+  }
 });
 
 onMounted(() => {
   ipcRenderer.on("isMaxed", (_e, state) => {
     // console.log("渲染进程收到的消息是：", state);
     if (state === "false") {
-      icon.srcset = restoreIcon;
+      Icon.value = restoreIcon;
     }
     if (state === "true") {
-      icon.srcset = maxIcon;
+      Icon.value = maxIcon;
     }
   });
 });
@@ -40,9 +40,9 @@ function toggleSize() {
   ipcRenderer.on("winState", (event, args) => {
     // console.log("渲染进程收到的消息是：", args);
     if (args === "maximize") {
-      icon.srcset = restoreIcon;
+      Icon.value = restoreIcon;
     } else if (args === "restore") {
-      icon.srcset = maxIcon;
+      Icon.value = maxIcon;
     }
   });
 }
@@ -54,11 +54,13 @@ function winClosed() {
 
 <template>
   <div
-    class="h-[35px] w-full text-gray-500 fixed border-b-[1px] border-b-light-400 bg-gray-50 dark:bg-selfBgColor dark:border-b-selfBorder"
+    :style="{height:height}"
+    class="w-full text-gray-500 fixed border-b-[1px] border-b-light-400 bg-gray-50 dark:bg-selfBgColor dark:border-b-selfBorder"
   >
     <div id="drag-region" class="w-full h-full grid grid-cols-[138px]">
       <div class="grid-cols-1 flex items-center pl-2">
         <span
+          :style="{fontSize:fontSize}"
           class="whitespace-nowrap leading-[1.5] text-ellipsis font-sans text-xs"
         >
           {{ title }}
@@ -74,7 +76,7 @@ function winClosed() {
         >
           <img
             class="icon"
-            srcset="../assets/icons/min.svg 2.5x"
+            srcset="../../assets/icons/min.svg 2.5x"
             draggable="false"
           />
         </div>
@@ -84,7 +86,7 @@ function winClosed() {
         >
           <img
             class="icon"
-            :srcset="icon.srcset + ' ' + '2.5x'"
+            :srcset="Icon + ' ' + '2.5x'"
             draggable="false"
           />
         </div>
@@ -95,7 +97,7 @@ function winClosed() {
         >
           <img
             class="icon"
-            srcset="../assets/icons/closed.svg 1.75x"
+            srcset="../../assets/icons/closed.svg 1.75x"
             draggable="false"
           />
         </div>
@@ -105,5 +107,5 @@ function winClosed() {
 </template>
 
 <style scoped>
-@import url("../assets/style/titlebar.css");
+@import url("../../assets/style/titlebar.css");
 </style>

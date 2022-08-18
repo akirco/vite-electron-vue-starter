@@ -1,6 +1,6 @@
 # Vue 3 + Typescript + Vite + electron
 
-**推荐使用`dev`分支模板**
+**推荐使用`dev`分支模板**此模板不能使用electron提供的预加载，渲染进程
 
 ## Recommended IDE Setup
 
