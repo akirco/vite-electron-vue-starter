@@ -1,17 +1,35 @@
-import { app, BrowserWindow } from "electron";
-import { createWindow } from "./app/createWindow";
+import {app, BrowserWindow, session} from "electron";
+import InitWindow from "./app/createWindow";
+import {VUEJS3_DEVTOOLS} from "electron-devtools-vendor";
 
-app.whenReady().then(async () => {
-  await createWindow();
-  //高dpi支持
+
+async function loadDevtools() {
+  const NODE_ENV = process.env.NODE_ENV;
+  console.log(NODE_ENV)
+  if (NODE_ENV === 'development') {
+    await session.defaultSession.loadExtension(VUEJS3_DEVTOOLS, {
+      allowFileAccess: true,
+    });
+    console.log('已安装: vue-devtools')
+  }
+}
+
+
+async function appReady() {
+  await new InitWindow().createWindow()
+  // await loadDevtools();
+  //high dpi support
   if (process.platform === "win32") {
     app.commandLine.appendSwitch("high-dpi-support", "true");
     app.commandLine.appendSwitch("force-device-scale-factor", "1");
   }
-});
+}
+
+app.whenReady().then(appReady);
 
 app.on("activate", async () => {
-  if (BrowserWindow.getAllWindows().length === 0) await createWindow();
+  if (BrowserWindow.getAllWindows().length === 0)
+    await appReady();
 });
 
 app.on("window-all-closed", () => {
