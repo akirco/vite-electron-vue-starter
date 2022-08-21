@@ -1,6 +1,6 @@
-import {ref} from "vue";
+import { ref } from "vue";
 
-// const platform = ref(process.platform === "win32");
-const platform = true
+const platform = ref(process.platform === "win32");
+// const platform = true
 
-export default platform
+export default platform;

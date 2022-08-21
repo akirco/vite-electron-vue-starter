@@ -1,5 +1,5 @@
 import path from "path";
-import {BrowserWindowConstructorOptions} from "electron";
+import { BrowserWindowConstructorOptions } from "electron";
 
 const platform = process.platform;
 
@@ -8,8 +8,8 @@ export const windowConfig: BrowserWindowConstructorOptions = {
   height: 590,
   minWidth: 971,
   minHeight: 590,
-  // frame: platform !== "win32",
-  frame: false,
+  frame: platform !== "win32",
+  // frame: false,
   thickFrame: true,
   hasShadow: true,
   show: false,
@@ -19,4 +19,4 @@ export const windowConfig: BrowserWindowConstructorOptions = {
     nodeIntegration: true,
     contextIsolation: false,
   },
-}
+};
