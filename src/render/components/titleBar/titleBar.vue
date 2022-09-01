@@ -23,6 +23,8 @@ defineProps({
 
 
 onMounted(() => {
+  console.log(platform);
+  
   ipcRenderer.on("isMaxed", (_e, state) => {
     if (state === "false") {
       Icon.value = restoreIcon;

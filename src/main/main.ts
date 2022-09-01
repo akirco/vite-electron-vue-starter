@@ -1,11 +1,10 @@
 import { app, BrowserWindow, session } from "electron";
 import InitWindow from "./app/createWindow";
-import { VUEJS3_DEVTOOLS } from "electron-devtools-vendor";
 
 async function loadDevtools() {
   const NODE_ENV = process.env.NODE_ENV;
-  console.log(NODE_ENV);
   if (NODE_ENV === "development") {
+    const { VUEJS3_DEVTOOLS } = require('electron-devtools-vendor');
     await session.defaultSession.loadExtension(VUEJS3_DEVTOOLS, {
       allowFileAccess: true,
     });

@@ -1,6 +1,6 @@
 ---
-appId: com.akirco.app
-productName: akirco
+appId: com.electron.app
+productName: electron
 copyright: Copyright © 2021 akirco
 files:
   - dist
@@ -22,7 +22,7 @@ nsis:
   allowToChangeInstallationDirectory: true
   createDesktopShortcut: true
   createStartMenuShortcut: true
-  shortcutName: faily
+  shortcutName: electron
   artifactName: "${productName}-${version}-setup.${ext}"
 linux:
   icon: "./public/icons/256x256.png"
@@ -31,8 +31,9 @@ linux:
   target:
     - tar.gz
     - AppImage
-# mac:
-#   target: dmg
-#   icon: "./public/electron.icns"
-#   category: public.app-category.developer-tools
-electronVersion: 18.2.4
+    - deb
+mac:
+  target: dmg
+  icon: "./public/electron.icns"
+  category: public.app-category.developer-tools
+electronVersion: 20.1.1

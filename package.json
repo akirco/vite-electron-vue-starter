@@ -15,7 +15,7 @@
     "build": "npm-run-all build:vue build:tsc build:all",
     "build:vue": "vue-tsc --noEmit && vite build",
     "build:tsc": "tsc -p tsconfig.electron.json",
-    "build:all": "electron-builder --publish always",
+    "build:all": "electron-builder",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -32,7 +32,7 @@
     "autoprefixer": "^10.4.8",
     "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",
-    "electron": "^17.4.11",
+    "electron": "^20.1.1",
     "electron-builder": "^23.3.3",
     "electron-devtools-vendor": "^1.1.0",
     "electron-rebuild": "^3.2.9",
