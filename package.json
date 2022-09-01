@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@babel/types": "^7.18.10",
-    "@headlessui/vue": "^1.6.7",
     "@heroicons/vue": "^1.0.6",
     "@vitejs/plugin-vue": "^2.3.3",
     "autoprefixer": "^10.4.8",

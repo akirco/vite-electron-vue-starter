@@ -3,13 +3,14 @@ import { BrowserWindowConstructorOptions } from "electron";
 
 const platform = process.platform;
 
+
+
 export const windowConfig: BrowserWindowConstructorOptions = {
   width: 971,
   height: 590,
   minWidth: 971,
   minHeight: 590,
-  frame: platform !== "win32",
-  // frame: false,
+  frame: platform === "win32",
   thickFrame: true,
   hasShadow: true,
   show: false,

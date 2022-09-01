@@ -1,6 +1,6 @@
-import {BrowserWindow, Menu} from "electron";
-import {toggleDark, windowAction} from "./ipcMain";
-import {windowConfig} from "./config";
+import { BrowserWindow, Menu } from "electron";
+import { toggleDark, windowAction } from "./ipcMain";
+import { windowConfig } from "./config";
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -12,8 +12,10 @@ class InitWindow {
   }
   async createWindow() {
     this.mainWindow.webContents.on("dom-ready", () => {
-      this.mainWindow.removeMenu();
-      Menu.setApplicationMenu(Menu.buildFromTemplate([]));
+      if (NODE_ENV !== "development") {
+        this.mainWindow.removeMenu();
+        Menu.setApplicationMenu(Menu.buildFromTemplate([]));
+      }
     });
     this.mainWindow.once("ready-to-show", async () => {
       await this.mainWindow.show();
