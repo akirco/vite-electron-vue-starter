@@ -1,17 +1,14 @@
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/render/**/*.{vue,js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/render/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        'selfBorder': "#1e2226",
-        'selfBgColor': "#282c34",
-        'PdarkBgColor': "#21252B",
-        'PlightBgColor':"#F8F9FB"
-      }
+        selfBorder: "#1e2226",
+        selfBgColor: "#282c34",
+        PdarkBgColor: "#21252B",
+        PlightBgColor: "#f8f8f8",
+      },
     },
   },
   plugins: [],
-}
+};

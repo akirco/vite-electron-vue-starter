@@ -1,18 +1,17 @@
 import path from "path";
 import { BrowserWindowConstructorOptions } from "electron";
 
-const platform = process.platform;
-
-
+const showFrame = process.platform === "win32" ? false : true;
 
 export const windowConfig: BrowserWindowConstructorOptions = {
-  width: 971,
-  height: 590,
-  minWidth: 971,
-  minHeight: 590,
-  frame: platform === "win32",
+  width: 1150,
+  height: 750,
+  minWidth: 1150,
+  minHeight: 750,
+  frame: showFrame,
   thickFrame: true,
   hasShadow: true,
+  resizable: false,
   show: false,
   icon: path.join(__dirname, "..", "..", "/.vue/electron.ico"),
   webPreferences: {

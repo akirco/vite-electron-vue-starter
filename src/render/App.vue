@@ -5,10 +5,11 @@ import LeftPanel from "./layout/left-panel.vue";
 </script>
 
 <template>
-  <topBar></topBar>
+  <topBar title="skylight"></topBar>
   <MainContent>
     <div class="flex h-full w-full">
       <LeftPanel></LeftPanel>
+      <RouterView></RouterView>
     </div>
   </MainContent>
 </template>

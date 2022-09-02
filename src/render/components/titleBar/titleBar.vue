@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onMounted, ref,nextTick} from "vue";
+import { onMounted, ref } from "vue";
 import maxIcon from "@/assets/icons/max.svg";
 import restoreIcon from "@/assets/icons/restore.svg";
 import ipcRenderer from "@/utils/ipcRenderer";
@@ -17,14 +17,13 @@ defineProps({
   },
   fontSize: {
     type: String,
-    default: "12px",
+    default: "15px",
   },
 });
 
-
 onMounted(() => {
   console.log(platform);
-  
+
   ipcRenderer.on("isMaxed", (_e, state) => {
     if (state === "false") {
       Icon.value = restoreIcon;
@@ -59,32 +58,32 @@ function winClosed() {
 <template>
   <div
     v-if="platform"
-    :style="platform?{ height: height }:{height: 0}"
-    class="w-full text-gray-500 fixed border-b-[1px] border-b-light-400 bg-gray-50 dark:bg-selfBgColor dark:border-b-selfBorder"
+    :style="platform ? { height: height } : { height: 0 }"
+    class="w-full text-gray-500 fixed border-b-[1px] border-b-selfBorder bg-selfBgColor dark:bg-selfBgColor dark:border-b-selfBorder"
   >
     <div id="drag-region" class="w-full h-full flex">
-      <div class="flex-grow flex items-center ">
+      <div class="flex-grow flex items-center">
         <div
           class="w-[50px] flex items-center justify-center select-none"
-          :style="{height:height}"
+          :style="{ height: height }"
           id="top"
         >
           <span id="fixed"></span>
         </div>
         <span
           :style="{ fontSize: fontSize }"
-          class="whitespace-nowrap  text-ellipsis font-sans text-xs m-auto"
+          class="whitespace-nowrap text-ellipsis font-sans text-xs m-auto"
         >
           {{ title }}
         </span>
       </div>
       <div
         id="window-controls"
-        class="grid  top-0 right-0 h-full select-none w-[150px]"
+        class="grid top-0 right-0 h-full select-none w-[150px]"
         draggable="false"
       >
         <div
-          class="flex justify-center items-center h-full w-full select-none hover:bg-gray-600 active:bg-zinc-500"
+          class="flex justify-center items-center h-full w-full select-none hover:bg-gray-300 dark:hover:bg-gray-600 active:bg-zinc-500"
           @click="winMinSize"
         >
           <img
@@ -94,10 +93,10 @@ function winClosed() {
           />
         </div>
         <div
-          class="flex justify-center items-center h-full w-full select-none hover:bg-gray-600 active:bg-zinc-500"
+          class="flex justify-center items-center h-full w-full select-none hover:bg-gray-300 dark:hover:bg-gray-600 active:bg-zinc-500"
           @click="toggleSize"
         >
-          <img class="icon" :srcset="Icon + ' ' + '2.5x'" draggable="false"/>
+          <img class="icon" :srcset="Icon + ' ' + '2.5x'" draggable="false" />
         </div>
 
         <div
@@ -110,7 +109,8 @@ function winClosed() {
             draggable="false"
           />
         </div>
-      </div> <!--end window-->
+      </div>
+      <!--end window-->
     </div>
   </div>
 </template>
