@@ -22,6 +22,9 @@
     "@vscode/codicons": "^0.0.32",
     "@vueuse/core": "^9.1.0",
     "@vueuse/electron": "^9.1.0",
+    "app-root-dir": "^1.0.2",
+    "axios": "^0.27.2",
+    "electron-is-dev": "^2.0.0",
     "vue": "^3.2.37",
     "vue-router": "4"
   },

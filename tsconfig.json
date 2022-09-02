@@ -26,7 +26,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "src/**/**/*.vue"
-  ],
+, "src/main/scripts/getPlatform.js", "src/main/scripts/binPath.js", "src/main/scripts/excute.js"  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

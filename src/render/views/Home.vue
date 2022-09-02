@@ -1,7 +1,11 @@
 <template>
-  <div class="w-full">home</div>
+  <div class="w-full">
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
 
-<style lang="scss" scoped></style>
+</script>
+
+<style lang="scss" scoped>
+</style>

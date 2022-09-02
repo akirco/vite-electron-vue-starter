@@ -1,77 +1,56 @@
 <template>
-  <div
-    class="w-[200px] h-full bg-PlightBgColor dark:bg-PdarkBgColor dark:text-gray-500"
-    id="left-panel"
-  >
+  <div class="w-[200px] h-full p-[10px] bg-PlightBgColor dark:bg-PdarkBgColor dark:text-gray-500" id="left-panel">
     <div class="item" v-for="item in menuList">
-      <RouterLink
-        :to="item.path"
-        class="w-full h-full block rounded-lg active:bg-gray-700 select-none"
-        >{{ item.title }}
+      <RouterLink :to="item.path"
+        class="w-[180px] h-full block rounded-lg hover:bg-gray-700 select-none border-0 shadow">
+        {{
+            item.title
+        }}
       </RouterLink>
     </div>
-
-    <MoonIcon
-      class="h-8 w-8 text-gray-800 dark:text-gray-500 cursor-pointer absolute bottom-2 left-2"
-      @click="toggleDark"
-    />
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, defineComponent } from "vue";
-import { MoonIcon } from "@heroicons/vue/outline";
-import btn from "@/components/button/btn.vue";
-import ipcRenderer from "@/utils/ipcRenderer";
 import type { MenuInfo } from "@/types";
+import { reactive, toRefs, defineComponent } from 'vue'
 
 export default defineComponent({
   setup() {
-    // * data
-    const menuList: MenuInfo[] = [
-      {
-        title: "Home",
-        path: "/",
-      },
-      {
-        title: "Tools",
-        path: "/tools",
-      },
-    ];
-    const state = reactive({
-      count: 0,
-      menuList,
+    const routes = reactive({
+      menuList: [
+        {
+          title: "Home",
+          path: "/",
+          icon: "HomeIcon"
+        },
+        {
+          title: "Tools",
+          path: "/tools",
+          icon: "MinusIcon"
+        },
+      ] as MenuInfo[],
     });
-    // * functions
-    const toggleDark = () => {
-      ipcRenderer.invoke<string>("dark-mode:toggle");
-    };
 
     return {
-      ...toRefs(state),
-      toggleDark,
-    };
+      ...toRefs(routes),
+    }
   },
-  components: {
-    btn,
-    MoonIcon,
-  },
-});
+})
 </script>
 <style scoped>
 .left-panel {
   display: grid;
 }
+
 .item {
   text-align: center;
   font-size: 110%;
   line-height: 48px;
-  width: 200px;
+  width: 180px;
   height: 48px;
   user-select: none;
 }
-.item:hover {
-  background-color: #323842;
-  cursor: pointer;
-}
 </style>
+
+

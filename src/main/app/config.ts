@@ -12,6 +12,7 @@ export const windowConfig: BrowserWindowConstructorOptions = {
   thickFrame: true,
   hasShadow: true,
   resizable: false,
+  autoHideMenuBar: true,
   show: false,
   icon: path.join(__dirname, "..", "..", "/.vue/electron.ico"),
   webPreferences: {
