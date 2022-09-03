@@ -3,3 +3,4 @@
 1. [bilibiliDown](https://github.com/5ime/bilidown/blob/main/bilidown.py)
 2. [Bilibili_GetReceivedGiftStream](https://github.com/boxie123/Bilibili_GetReceivedGiftStream)
 3. [get location](http://pv.sohu.com/cityjson?ie=utf-8)
+4. [bilibili-video-download](https://github.com/18zili/bilibili-video-download)
