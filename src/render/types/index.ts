@@ -2,7 +2,7 @@
 export interface MenuInfo {
   title: string;
   path: string;
-  icon: string;
+  icon?: string
 }
 //! request 相关
 export interface Result<T> {

@@ -16,7 +16,6 @@ export const windowConfig: BrowserWindowConstructorOptions = {
   show: false,
   icon: path.join(__dirname, "..", "..", "/.vue/electron.ico"),
   webPreferences: {
-    preload: path.join(__dirname, "..", "preload.js"),
     nodeIntegration: true,
     contextIsolation: false,
   },

@@ -1,16 +1,22 @@
-const { resolve, join }=require('path')
+const { resolve, join,dirname }=require('path')
 const getPlatform = require('./getPlatform')
-// const isDev = require("electron-is-dev");
+const isDev = require("electron-is-dev");
+const appRootDir = require("app-root-dir");
 
-console.log(process.execPath);
 
-// const binariesPath = isDev
-//   ? join(appRootDir.get(), "resources", getPlatform(), "bin")
-//   : join(dirname(appRootDir.get()), "..", "Resources", "bin");
+//! 执行文件目录
+const execDir = isDev
+  ? join(appRootDir.get(), "src","resources", getPlatform(),'bin')
+  : join(dirname(appRootDir.get()), "..", "lib","bin");
 
-// const execPath = path.resolve(path.join(binariesPath, "./upscayl"));
-// const modelsPath = isDev 
-//   ? path.resolve(path.join(binariesPath, "../../models"))
-//   : path.resolve(path.join(binariesPath, "../models"))
+//! 执行文件路径 
+const execPath = resolve(join(execDir, "RealESRGAN"));
 
-// module.exports = { execPath, modelsPath };
+//! models目录
+const modelsPath = isDev 
+  ? resolve(join(execDir, "../../models"))
+  : resolve(join(execDir, "../models"))
+
+console.log(execPath,modelsPath); 
+
+module.exports = { execPath, modelsPath };

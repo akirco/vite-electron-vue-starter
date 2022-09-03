@@ -1,37 +1,39 @@
 <template>
   <div class="w-[200px] h-full p-[10px] bg-PlightBgColor dark:bg-PdarkBgColor dark:text-gray-500" id="left-panel">
-    <div class="item" v-for="item in menuList">
-      <RouterLink :to="item.path"
-        class="w-[180px] h-full block rounded-lg hover:bg-gray-700 select-none border-0 shadow">
-        {{
-            item.title
-        }}
-      </RouterLink>
-    </div>
+    <RouterLink draggable="false" id="item" :to="item.path" active-class="active"
+      class="w-[180px] h-full block select-none border-none   hover:bg-light-700 hover:shadow-lg rounded mb-4 bg-selfBgColor"
+      v-for="item in menuList">
+      {{ item.title }}
+    </RouterLink>
   </div>
 </template>
 
 <script lang="ts">
 import type { MenuInfo } from "@/types";
-import { reactive, toRefs, defineComponent } from 'vue'
+import { reactive, toRefs, defineComponent, } from 'vue'
 
 export default defineComponent({
   setup() {
     const routes = reactive({
       menuList: [
         {
-          title: "Home",
+          title: "首页",
           path: "/",
-          icon: "HomeIcon"
         },
         {
-          title: "Tools",
+          title: "哔哩哔哩",
+          path: "/bilidown",
+        },
+        {
+          title: "画质增强",
           path: "/tools",
-          icon: "MinusIcon"
+        },
+        {
+          title: "待办事项",
+          path: "/todos",
         },
       ] as MenuInfo[],
     });
-
     return {
       ...toRefs(routes),
     }
@@ -39,18 +41,7 @@ export default defineComponent({
 })
 </script>
 <style scoped>
-.left-panel {
-  display: grid;
-}
-
-.item {
-  text-align: center;
-  font-size: 110%;
-  line-height: 48px;
-  width: 180px;
-  height: 48px;
-  user-select: none;
-}
+@import url('@/assets/style/leftPanel.css');
 </style>
 
 

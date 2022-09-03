@@ -1,0 +1,18 @@
+.left-panel {
+  display: grid;
+}
+
+#item {
+  text-align: center;
+  font-size: 110%;
+  line-height: 48px;
+  width: 180px;
+  height: 48px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.active{
+  background:rgba(55,65,81,.9)
+}
