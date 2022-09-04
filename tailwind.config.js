@@ -7,8 +7,10 @@ module.exports = {
         selfBgColor: "#282c34",
         PdarkBgColor: "#21252B",
         PlightBgColor: "#f8f8f8",
+        lightBgColor: "#f5f5f5",
+        lightChildNavBg: "#f2f1f6",
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };

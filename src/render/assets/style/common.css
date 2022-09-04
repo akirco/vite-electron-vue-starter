@@ -1,0 +1,8 @@
+#box {
+  margin: 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(0 0 0 / 0.1);
+}
+.child_active {
+  background-color: #ff6699;
+}

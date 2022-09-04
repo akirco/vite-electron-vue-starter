@@ -47,5 +47,4 @@ function fixed(mainWindow: BrowserWindow) {
   });
 }
 
-
 export { windowAction, toggleDark };

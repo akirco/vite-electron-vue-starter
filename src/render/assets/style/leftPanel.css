@@ -13,6 +13,8 @@
   align-items: center;
   justify-content: space-around;
 }
-.active{
-  background:rgba(55,65,81,.9)
+.active {
+  border-left: 6px groove #323842;
+  border: 1px solid rgb(209 154 102 / 0.1);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
