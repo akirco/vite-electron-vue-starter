@@ -31,7 +31,7 @@ linux:
   target:
     - tar.gz
     - AppImage
-    - deb
+  #  - deb
 mac:
   target: dmg
   icon: "./public/electron.icns"

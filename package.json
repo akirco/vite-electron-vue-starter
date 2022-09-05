@@ -16,12 +16,14 @@
     "build:vue": "vue-tsc --noEmit && vite build",
     "build:tsc": "tsc -p tsconfig.electron.json",
     "build:all": "electron-builder",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall":"electron-builder install-app-deps"
   },
   "dependencies": {
     "@vscode/codicons": "^0.0.32",
     "@vueuse/core": "^9.1.0",
     "@vueuse/electron": "^9.1.0",
+    "animejs": "^3.2.1",
     "app-root-dir": "^1.0.2",
     "axios": "^0.27.2",
     "daisyui": "^2.24.0",

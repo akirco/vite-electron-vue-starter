@@ -1,30 +1,15 @@
 <template>
-  <div id="predownload" class="h-[98%]">
-    <div
-      id="input_region"
-      class="pt-2 pl-2 border-2 border-dashed border-dark-50 m-2 dark:border-gray-700"
-    >
-      <input
-        v-model="rawUrl"
-        type="text"
-        placeholder="Type here"
-        class="input input-bordered input-md w-full"
-      />
+  <div id="predownload" class="h-full w-full">
+    <div id="input_region" class="pt-2 pl-2 border-2 border-dashed border-dark-50 m-2 dark:border-gray-700">
+      <input v-model="rawUrl" type="text" placeholder="Type here" class="input input-bordered input-md w-full" />
       <div class="pl-4">
-        <button
-          @click="fetchVideo"
-          class="btn gap-2 btn-accent dark:text-gray-700"
-        >
+        <button @click="fetchVideo" class="btn gap-2 btn-accent dark:text-gray-700">
           <FilterIcon class="h-6 w-6" />
           解析视频
         </button>
       </div>
       <!-- end1 -->
-      <select class="select select-bordered w-full">
-        <option disabled selected>Who shot first?</option>
-        <option>Han Solo</option>
-        <option>Greedo</option>
-      </select>
+      <div></div>
       <div class="pl-4">
         <button class="btn gap-2 btn-accent dark:text-gray-700">
           <DocumentDownloadIcon class="h-6 w-6" />
@@ -87,10 +72,7 @@ export default defineComponent({
         const result = await request.get(
           `https://tenapi.cn/video/?url=${originUrl[0]}`
         );
-        if (result.code === 200) {
-          const data = await request.download(result.cover, {});
-          console.log(data);
-        }
+    
       }
     };
 
@@ -119,6 +101,7 @@ export default defineComponent({
   grid-template-rows: 50% 50%;
   grid-template-columns: 80% 20%;
 }
+
 /* 外部播放器组件样式 */
 #refPlayerWrap {
   border-radius: 12px;

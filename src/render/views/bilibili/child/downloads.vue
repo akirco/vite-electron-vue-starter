@@ -1,11 +1,10 @@
 <template>
-  <div
-    class="h-[98%] border-2 border-dashed border-dark-50 m-2 dark:border-gray-700"
-  ></div>
+  <Table />
 </template>
 
 <script lang="ts">
 import { reactive, toRefs } from "vue";
+import Table from '@/components/table/table.vue'
 
 export default {
   setup() {
@@ -17,7 +16,11 @@ export default {
       ...toRefs(state),
     };
   },
+  components:{
+    Table
+  }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

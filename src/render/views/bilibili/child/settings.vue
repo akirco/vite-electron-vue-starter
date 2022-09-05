@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="h-[98%] border-2 border-dashed border-dark-50 m-2 dark:border-gray-700"
-  ></div>
+
 </template>
 
 <script lang="ts">
@@ -20,4 +18,5 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

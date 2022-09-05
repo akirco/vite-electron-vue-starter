@@ -10,16 +10,13 @@ defineProps({
 </script>
 
 <template>
-  <div id="main-content"
-       class="relative"
-       :style=
-         "platform ? {
-           top: height,
-           height:`calc(100% - ${height})`
-         }:{
-           top: 0,
-           height: `100%`
-         }">
+  <div id="main-content" class="fixed w-full" :style="platform ? {
+    top: height,
+    height:`calc(100% - ${height})`
+  }:{
+    top: 0,
+    height: `100%`
+  }">
     <slot></slot>
   </div>
 </template>

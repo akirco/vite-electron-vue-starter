@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/home/Home.vue";
 import Realesgan from "@/views/realesrgan/Realesgan.vue";
 import Bili from "@/views/bilibili/Bilidown.vue";
-import Predownload from "@/views/bilibili/child/predownload.vue";
 import Todos from "@/views/Todos.vue";
 
 const router = createRouter({
@@ -22,7 +21,7 @@ const router = createRouter({
       children: [
         {
           path: "/bilidown/predownload",
-          component: Predownload,
+          component: () => import("@/views/bilibili/child/predownload.vue"),
         },
         {
           path: "/bilidown/downloads",
