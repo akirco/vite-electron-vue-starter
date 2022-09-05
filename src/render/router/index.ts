@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/home/Home.vue";
 import Realesgan from "@/views/realesrgan/Realesgan.vue";
 import Bili from "@/views/bilibili/Bilidown.vue";
-import Todos from "@/views/Todos.vue";
+import Todos from "@/views/todos/Todos.vue";
 
 const router = createRouter({
   history: createWebHistory(),

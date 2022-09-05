@@ -1,6 +1,6 @@
 <template>
-    <div>
-        4
+    <div class="w-full h-full" @contextmenu="fn">
+
     </div>
 </template>
 
@@ -12,9 +12,13 @@ export default {
         const state = reactive({
             count: 0,
         })
+        const fn = ()=>{
+            console.log(1);
+        }
 
         return {
             ...toRefs(state),
+            fn
         }
     }
 }
