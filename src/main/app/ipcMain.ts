@@ -1,4 +1,4 @@
-import { ipcMain, nativeTheme } from "electron";
+import { ipcMain, nativeTheme, dialog } from "electron";
 import type { BrowserWindow } from "electron";
 
 function windowAction(mainWindow: BrowserWindow) {
@@ -41,10 +41,42 @@ function toggleDark() {
     nativeTheme.themeSource = "system";
   });
 }
+
+function RealesganHandler() {
+  //* 选择图片
+  ipcMain.handle("selectImage", async (event, message) => {
+    const { canceled, filePaths } = await dialog.showOpenDialog({
+      properties: ["openFile"],
+    });
+
+    if (canceled) {
+      console.log("operation cancelled");
+      return "cancelled";
+    } else {
+      console.log(filePaths[0]);
+      return filePaths[0];
+    }
+  });
+
+  // * 选择目录
+  ipcMain.handle("selectFolder", async (event, message) => {
+    const { canceled, filePaths } = await dialog.showOpenDialog({
+      properties: ["openDirectory"],
+    });
+    if (canceled) {
+      console.log("operation cancelled");
+      return "cancelled";
+    } else {
+      console.log(filePaths[0]);
+      return filePaths[0];
+    }
+  });
+}
+
 function fixed(mainWindow: BrowserWindow) {
   ipcMain.on("fixed", () => {
     mainWindow.setAlwaysOnTop(true, "modal-panel");
   });
 }
 
-export { windowAction, toggleDark };
+export { windowAction, toggleDark, RealesganHandler };

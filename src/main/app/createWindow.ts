@@ -1,5 +1,5 @@
 import { BrowserWindow, Menu } from "electron";
-import { toggleDark, windowAction } from "./ipcMain";
+import { toggleDark, windowAction, RealesganHandler } from "./ipcMain";
 import { windowConfig } from "./config";
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -9,6 +9,7 @@ class InitWindow {
   constructor() {
     windowAction(this.mainWindow);
     toggleDark();
+    RealesganHandler();
   }
   async createWindow() {
     this.mainWindow.webContents.on("dom-ready", () => {
