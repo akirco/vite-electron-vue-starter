@@ -1,5 +1,6 @@
-import { app, BrowserWindow, session } from "electron";
+import { app, BrowserWindow, session, protocol } from "electron";
 import InitWindow from "./app/createWindow";
+import path from 'path';
 
 async function loadDevtools() {
   const NODE_ENV = process.env.NODE_ENV;
@@ -12,8 +13,18 @@ async function loadDevtools() {
   }
 }
 
+async function RegisterProtocol() {
+  protocol.registerFileProtocol('atom', (request, callback) => {
+    const url = request.url.substr(7)
+    callback(decodeURI(path.normalize(url)))
+  })
+}
+
+
+
 async function appReady() {
-  await loadDevtools();
+  await RegisterProtocol()
+  // await loadDevtools();
   await new InitWindow().createWindow();
   //high dpi support
   if (process.platform === "win32") {

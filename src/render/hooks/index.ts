@@ -1,8 +1,11 @@
 import ipcRenderer from '../utils/ipcRenderer';
 
 class OneWayBackend {
-    setPath(path: string) {
-        ipcRenderer.send("setPath", path);
+    setOutputPath(path: string) {
+        ipcRenderer.send("setOutputPath", path);
+    }
+    setImagePath(path: string) {
+        ipcRenderer.send("setImagePath", path);
     }
 }
 class BothWayCommunicate {
