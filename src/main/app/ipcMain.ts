@@ -53,13 +53,13 @@ function RealesganHandler() {
       console.log("operation cancelled");
       return "cancelled";
     } else {
-      console.log(filePaths[0]);
+      // console.log(filePaths[0]);
       return filePaths[0];
     }
   });
 
   // * 选择目录
-  ipcMain.handle("selectFolder", async (event, message) => {
+  ipcMain.handle("selectFolder", async () => {
     const { canceled, filePaths } = await dialog.showOpenDialog({
       properties: ["openDirectory"],
     });
@@ -67,10 +67,30 @@ function RealesganHandler() {
       console.log("operation cancelled");
       return "cancelled";
     } else {
-      console.log(filePaths[0]);
+      // console.log(filePaths[0]);
       return filePaths[0];
     }
   });
+
+  // * set image path
+  ipcMain.on("setImagePath", (_, args) => {
+    console.log("setImagePath:", args);
+  })
+
+  //* setOutputPath
+  ipcMain.on("setOutputPath", (_, args) => {
+    console.log(args);
+  })
+
+  //* setModel
+  ipcMain.on("setModel", (_, args) => {
+    console.log(args);
+  })
+
+  //* start enhance
+  ipcMain.handleOnce("startEhance", (_, args) => {
+    console.log(args);
+  })
 }
 
 function fixed(mainWindow: BrowserWindow) {
