@@ -24,7 +24,7 @@ import {
   defineComponent,
   ref,
   onMounted,
-  
+
 } from "vue";
 import ipcRenderer from "@/utils/ipcRenderer";
 import { SunIcon, MoonIcon } from "@heroicons/vue/outline";
@@ -39,7 +39,7 @@ export default defineComponent({
         },
         {
           title: "Downloader",
-          path: "/bilidown",
+          path: "/downloader",
         },
         {
           title: "Realesgan",
@@ -67,7 +67,7 @@ export default defineComponent({
       ipcRenderer.invoke<string>("dark-mode:toggle");
     }
 
-    
+
     return {
       ...toRefs(state),
       toggleDark,

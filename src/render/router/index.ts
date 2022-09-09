@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/home/Home.vue";
 import Realesgan from "@/views/realesrgan/Realesgan.vue";
-import Bili from "@/views/bilibili/Bilidown.vue";
+import Downloader from "@/views/downloader/Downloader.vue";
 import Todos from "@/views/todos/Todos.vue";
 
 const router = createRouter({
@@ -16,24 +16,24 @@ const router = createRouter({
       component: Realesgan,
     },
     {
-      path: "/bilidown",
-      component: Bili,
+      path: "/downloader",
+      component: Downloader,
       children: [
         {
-          path: "/bilidown/predownload",
-          component: () => import("@/views/bilibili/child/predownload.vue"),
+          path: "/downloader/predownload",
+          component: () => import("@/views/downloader/child/predownload.vue"),
         },
         {
-          path: "/bilidown/downloads",
-          component: () => import("@/views/bilibili/child/downloads.vue"),
+          path: "/downloader/downloads",
+          component: () => import("@/views/downloader/child/downloads.vue"),
         },
         {
-          path: "/bilidown/files",
-          component: () => import("@/views/bilibili/child/files.vue"),
+          path: "/downloader/files",
+          component: () => import("@/views/downloader/child/files.vue"),
         },
         {
-          path: "/bilidown/settings",
-          component: () => import("@/views/bilibili/child/settings.vue"),
+          path: "/downloader/settings",
+          component: () => import("@/views/downloader/child/settings.vue"),
         },
       ],
     },

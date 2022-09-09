@@ -72,14 +72,11 @@ import {
 } from "@heroicons/vue/outline";
 import hook from "@/hooks";
 import { ref } from "vue";
-// import chnnel from '@cmd/command.js'
-
-const { ipcRenderer } = require("electron");
+import ipcRenderer from "@/utils/ipcRenderer";
 const imgPathList = ref([]);
 const model = ref("realesrgan-x4plus");
 
 
-console.log(chnnel);
 
 
 const selectImage = async () => {

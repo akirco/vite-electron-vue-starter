@@ -480,14 +480,6 @@
     "@vueuse/shared" "9.1.1"
     vue-demi "*"
 
-"@vueuse/electron@^9.1.0":
-  version "9.1.1"
-  resolved "https://mirrors.cloud.tencent.com/npm/@vueuse%2felectron/-/electron-9.1.1.tgz#d0a3608e2eb0c7cada552c299198a1a06598a499"
-  integrity sha512-kXASjfeZZbIfNoz9XNDTJTifSPA51gBH0X0pg9yYOx5BUE7Koqn5naxrFLEBMawt/B4hqi9rTUb91dz5GgmubA==
-  dependencies:
-    "@vueuse/shared" "9.1.1"
-    vue-demi "*"
-
 "@vueuse/metadata@9.1.1":
   version "9.1.1"
   resolved "https://mirrors.tencent.com/npm/@vueuse%2fmetadata/-/metadata-9.1.1.tgz#b3fe4b97e62096f7566cd8eb107c503998b2c9a6"
@@ -2878,11 +2870,6 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   version "1.0.4"
   resolved "https://mirrors.cloud.tencent.com/npm/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
-
-module-alias@^2.2.2:
-  version "2.2.2"
-  resolved "https://mirrors.cloud.tencent.com/npm/module-alias/-/module-alias-2.2.2.tgz#151cdcecc24e25739ff0aa6e51e1c5716974c0e0"
-  integrity sha512-A/78XjoX2EmNvppVWEhM2oGk3x4lLxnkEA4jTbaK97QKSDjkIoOsKQlfylt/d3kKKi596Qy3NP5XrXJ6fZIC9Q==
 
 ms@2.0.0:
   version "2.0.0"

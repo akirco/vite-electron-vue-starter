@@ -1,3 +1,4 @@
-import { useIpcRenderer } from "@vueuse/electron"
-const ipcRenderer = useIpcRenderer();
+const { ipcRenderer } = require("electron");
+
 export default ipcRenderer;
+
