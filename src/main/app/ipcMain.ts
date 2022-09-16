@@ -1,5 +1,6 @@
 import { ipcMain, nativeTheme, dialog } from "electron";
 import type { BrowserWindow } from "electron";
+import os from 'node:os'
 
 function windowAction(mainWindow: BrowserWindow) {
   // 窗口事件
@@ -47,13 +48,15 @@ function RealesganHandler() {
   ipcMain.handle("selectImage", async (event, message) => {
     const { canceled, filePaths } = await dialog.showOpenDialog({
       properties: ["openFile"],
+      filters: [{ name: `图片`, extensions: ["jpg", "png"] }],
+      defaultPath: os.homedir()
     });
 
     if (canceled) {
       console.log("operation cancelled");
       return "cancelled";
     } else {
-      // console.log(filePaths[0]);
+      console.log("select img:", filePaths);
       return filePaths[0];
     }
   });
@@ -73,8 +76,13 @@ function RealesganHandler() {
   });
 
   // * set image path
-  ipcMain.on("setImagePath", (_, args) => {
-    console.log("setImagePath:", args);
+  ipcMain.on("setImagePath", (_, args: string) => {
+    const ext = args.substring(args.lastIndexOf('.'), args.length);
+    if (ext === ".jpg" || ext === ".png") {
+      console.log("setImagePath:", args);
+    } else {
+      return
+    }
   })
 
   //* setOutputPath
