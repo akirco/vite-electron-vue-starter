@@ -1,26 +1,29 @@
 <script setup lang="ts">
-import {ref} from "vue";
-import platform from "@/utils/showFrame";
-
+const showFrame = window.showFrame;
 defineProps({
   height: {
     type: String,
-    default: "35px"
-  }
-})
+    default: "35px",
+  },
+});
 </script>
 
 <template>
-  <div id="main-content"
-       class="relative"
-       :style=
-         "platform ? {
-           top: height,
-           height:`calc(100% - ${height})`
-         }:{
-           top: 0,
-           height: `100%`
-         }">
+  <div
+    id="main-content"
+    class="relative dark:bg-selfBgColor"
+    :style="
+      showFrame
+        ? {
+            top: 0,
+            height: `100%`,
+          }
+        : {
+            top: height,
+            height: `calc(100% - ${height})`,
+          }
+    "
+  >
     <slot></slot>
   </div>
 </template>

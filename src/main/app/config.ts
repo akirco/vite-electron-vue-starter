@@ -4,14 +4,11 @@ import { BrowserWindowConstructorOptions } from "electron";
 const platform = process.platform;
 
 export const windowConfig: BrowserWindowConstructorOptions = {
-  width: 971,
-  height: 590,
-  minWidth: 971,
-  minHeight: 590,
+  width: 990,
+  height: 650,
   frame: platform !== "win32",
-  // frame: false,
-  thickFrame: true,
   hasShadow: true,
+  thickFrame: false,
   show: false,
   icon: path.join(__dirname, "..", "..", "/.vue/electron.ico"),
   webPreferences: {
