@@ -1,49 +1,43 @@
-import {ipcMain, nativeTheme} from "electron";
-import type {BrowserWindow} from "electron";
+import type { BrowserWindow } from 'electron';
+import { ipcMain, nativeTheme } from 'electron';
 
 function windowAction(mainWindow: BrowserWindow) {
-  // 窗口事件
-  ipcMain.on("windowMinSize", () => {
+  ipcMain.on('windowMinSize', () => {
     mainWindow.minimize();
   });
-  ipcMain.on("toggleSize", (event) => {
+  ipcMain.on('toggleSize', (event) => {
     if (mainWindow.isMaximized()) {
       mainWindow.restore();
     } else {
       mainWindow.maximize();
     }
   });
-  ipcMain.on("windowClosed", () => {
+  ipcMain.on('windowClosed', () => {
     mainWindow.close();
   });
 
-  mainWindow.on("maximize", () => {
-    mainWindow.webContents.send("isMaxed", "false");
+  mainWindow.on('maximize', () => {
+    mainWindow.webContents.send('isMaxed', 'false');
   });
 
-  mainWindow.on("unmaximize", () => {
-    mainWindow.webContents.send("isMaxed", "true");
+  mainWindow.on('unmaximize', () => {
+    mainWindow.webContents.send('isMaxed', 'true');
   });
 }
 
 function toggleDark() {
-  ipcMain.handle("dark-mode:toggle", () => {
+  ipcMain.handle('dark-mode:toggle', () => {
     if (nativeTheme.shouldUseDarkColors) {
-      nativeTheme.themeSource = "light";
+      nativeTheme.themeSource = 'light';
     } else {
-      nativeTheme.themeSource = "dark";
+      nativeTheme.themeSource = 'dark';
     }
     return nativeTheme.shouldUseDarkColors;
   });
 
-  ipcMain.handle("dark-mode:system", () => {
-    nativeTheme.themeSource = "system";
+  ipcMain.handle('dark-mode:system', () => {
+    nativeTheme.themeSource = 'system';
   });
 }
-function fixed(mainWindow:BrowserWindow){
-  ipcMain.on("fixed",()=>{
-    mainWindow.setAlwaysOnTop(true,"modal-panel");
-  })
-}
 
-export {windowAction, toggleDark};
+export { windowAction, toggleDark };

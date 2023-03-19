@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import topBar from "@render/components/titleBar";
 import MainContent from "./layout/main-content.vue";
-import topBar from "@/components/titleBar";
 
 const ipcRenderer = window.ipcRenderer;
 const toggleDark = () => ipcRenderer.invoke("dark-mode:toggle");

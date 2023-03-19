@@ -7,7 +7,7 @@ files:
 directories:
   output: build
 win:
-  icon: "./public/electron.ico"
+  icon: './public/electron.ico'
   publish:
     - provider: github
       repo: vite-electron-vue-starter
@@ -23,10 +23,10 @@ nsis:
   createDesktopShortcut: true
   createStartMenuShortcut: true
   shortcutName: electron
-  artifactName: "${productName}-${version}-setup.${ext}"
+  artifactName: '${productName}-${version}-setup.${ext}'
 linux:
-  icon: "./public/icons/256x256.png"
-  category: "Development"
+  icon: './public/icons/256x256.png'
+  category: 'Development'
   maintainer: akirco
   target:
     - tar.gz
@@ -34,6 +34,6 @@ linux:
     - deb
 mac:
   target: dmg
-  icon: "./public/electron.icns"
+  icon: './public/electron.icns'
   category: public.app-category.developer-tools
-electronVersion: 22.0.3
+electronVersion: 23.1.4

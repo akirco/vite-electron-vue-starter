@@ -1,6 +1,15 @@
 html,
-body,#app{
+html,
+body {
+  background-color: transparent;
   height: 100%;
+}
+
+#app {
+  height: 100%;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 * {
