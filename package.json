@@ -3,11 +3,11 @@
   "author": "aki",
   "description": "electron vue starter",
   "email": "earlfx@163.com",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "license": "ISC",
   "main": "dist/.electron/main.js",
   "engines": {
-    "node": "16.14.2"
+    "node": "16.19.1"
   },
   "scripts": {
     "dev": "kill-port 3000 && concurrently -k \"vite -l silent\" \"wait-on tcp:3000 && npm-run-all watch\"",
