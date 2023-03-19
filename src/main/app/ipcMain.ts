@@ -5,7 +5,7 @@ function windowAction(mainWindow: BrowserWindow) {
   ipcMain.on('windowMinSize', () => {
     mainWindow.minimize();
   });
-  ipcMain.on('toggleSize', (event) => {
+  ipcMain.on('toggleSize', () => {
     if (mainWindow.isMaximized()) {
       mainWindow.restore();
     } else {

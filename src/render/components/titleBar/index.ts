@@ -1,7 +1,7 @@
-import titleBar from './titleBar.vue'
-import type {App} from "vue";
+import titleBar from './titleBar.vue';
+import type { App } from 'vue';
 
-titleBar.install = (app:App)=> {
+titleBar.install = (app: App) => {
   app.component(titleBar.name, titleBar);
 };
-export default titleBar
+export default titleBar;

@@ -1,33 +1,34 @@
-import { app, BrowserWindow, session } from "electron";
-import InitWindow from "./app/createWindow";
-import { DEV_TOOLS_ISOPEN } from "./config";
+import { app, BrowserWindow, session } from 'electron';
+import InitWindow from './app/createWindow';
+import { DEV_TOOLS_ISOPEN } from './config';
 
 async function loadDevtools() {
-  const { VUEJS3_DEVTOOLS } = require("electron-devtools-vendor");
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { VUEJS3_DEVTOOLS } = require('electron-devtools-vendor');
   await session.defaultSession.loadExtension(VUEJS3_DEVTOOLS, {
     allowFileAccess: true,
   });
-  console.log("install vue-devtools sucess!");
+  console.log('install vue-devtools sucess!');
 }
 
 async function appReady() {
   if (DEV_TOOLS_ISOPEN()) await loadDevtools();
 
   await new InitWindow().createWindow();
-  if (process.platform === "win32") {
-    app.commandLine.appendSwitch("high-dpi-support", "true");
-    app.commandLine.appendSwitch("force-device-scale-factor", "1");
+  if (process.platform === 'win32') {
+    app.commandLine.appendSwitch('high-dpi-support', 'true');
+    app.commandLine.appendSwitch('force-device-scale-factor', '1');
   }
 }
 
 app.whenReady().then(appReady);
 
-app.on("activate", async () => {
+app.on('activate', async () => {
   if (BrowserWindow.getAllWindows().length === 0) await appReady();
 });
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
